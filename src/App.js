@@ -2,12 +2,12 @@ import React from 'react';
 import MyProvider from './MyProvider';
 import './App.css';
 
-import LanguageChange from './LanguageChange';
+import Landing from './Landing';
 
 function App() {
   return (
     <MyProvider>
-      <LanguageChange />
+      <Landing />
     </MyProvider>
   );
 }

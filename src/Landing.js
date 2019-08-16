@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { MyContext } from './MyProvider'
 import './App.css';
 import {
-  Layout, Card, Row, Col, ConfigProvider, Radio, Select,
+  Layout,
+  Card,
+  Row,
+  Col,
+  ConfigProvider,
+  Radio,
+  Select,
   DatePicker,
   TimePicker
 } from 'antd';
@@ -21,7 +27,7 @@ const { Header, Content } = Layout;
 const { Option } = Select;
 const { RangePicker } = DatePicker;
 
-class LanguageChange extends Component {
+class Landing extends Component {
   render() {
     const { changeLocale, state } = this.context;
     const { locale } = state;
@@ -71,6 +77,6 @@ class LanguageChange extends Component {
   }
 }
 
-LanguageChange.contextType = MyContext;
+Landing.contextType = MyContext;
 
-export default LanguageChange;
+export default Landing;
