@@ -1,11 +1,15 @@
 import React, { Component } from 'react'
+import enUS from 'antd/es/locale/en_US';
+import zhCN from 'antd/es/locale/zh_CN';
+import moment from 'moment';
 
 export const MyContext = React.createContext();
 
 class MyProvider extends Component {
   state = {
     name: 'Onkar',
-    age: 30
+    age: 30,
+    locale: enUS
   }
 
   onIncrementAge = () => {
@@ -16,11 +20,22 @@ class MyProvider extends Component {
     })
   }
 
+  changeLocale = e => {
+    const localeValue = e.target.value;
+    this.setState({ locale: localeValue });
+    if (!localeValue) {
+      moment.locale('en');
+    } else {
+      moment.locale('zh-cn');
+    }
+  }
+
   render() {
     return (
       <MyContext.Provider value={{
         state: this.state,
-        onIncrementAge: this.onIncrementAge
+        onIncrementAge: this.onIncrementAge,
+        changeLocale: this.changeLocale
       }}>
         {this.props.children}
       </MyContext.Provider>

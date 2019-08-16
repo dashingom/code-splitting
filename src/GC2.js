@@ -1,17 +1,20 @@
-import React, { useContext } from 'react'
-
+import React, { Fragment, Component } from 'react'
 import { MyContext } from './MyProvider'
 
-function GC2() {
-  const { state } = useContext(MyContext);
-  const { name, age, } = state;
-  return (
-    <div>
-      <p>GC2</p>
-      <p>{name}</p>
-      <p>{age}</p>
-    </div>
-  )
+class GC2 extends Component {
+  render() {
+    const { state, onIncrementAge } = this.context;
+    const { name, age, } = state;
+    return (
+      <Fragment>
+        <p>GC2</p>
+        <p>Name: {name}</p>
+        <p>Age: {age}</p>
+      </Fragment>
+    )
+  }
 }
+
+GC2.contextType = MyContext;
 
 export default GC2
