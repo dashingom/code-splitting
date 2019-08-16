@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import MyProvider from './MyProvider';
 import './App.css';
+import { Layout, Card, Row, Col } from 'antd';
+import C1 from './C1';
+import C2 from './C2';
+
+const { Header, Content } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyProvider>
+      <Layout className="layout">
+        <Header>
+          <div className="logo">Logo</div>
+        </Header>
+        <Content style={{ padding: '0 50px' }}>
+          <Row>
+            <Col span={12}>
+              <Card title="Child 1">
+                <C1 />
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card title="Child 2">
+                <C2 />
+              </Card>
+            </Col>
+          </Row>
+        </Content>
+      </Layout>
+    </MyProvider>
   );
 }
 
