@@ -5,6 +5,10 @@ import MyProvider from "./MyProvider";
 import "./App.css";
 import "./sass/app.scss";
 import { Layout } from "antd";
+/* import AsyncLanding from "./Landing";
+import AsyncHome from "./components/Home";
+import AsyncHelloWorld from "./components/HelloWorld";
+import AsyncGoodnightMoon from "./components/GoodnightMoon"; */
 
 import NavBar from "./components/NavBar";
 import Footer1 from "./components/Footer";
