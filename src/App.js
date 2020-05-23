@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Loadable from "react-loadable";
+//import loadable from "@loadable/component";
 import MyProvider from "./MyProvider";
 import "./App.css";
 import "./sass/app.scss";
@@ -15,6 +16,28 @@ import Footer1 from "./components/Footer";
 
 const { Content, Footer } = Layout;
 
+/**
+ * code splitting using @loadable/component
+ */
+/* const AsyncLanding = loadable(() => import("./Landing"), {
+  fallback: <div>Loading...</div>,
+});
+const AsyncHome = loadable(() => import("./components/Home"), {
+  fallback: <div>Loading...</div>,
+});
+const AsyncHelloWorld = loadable(() => import("./components/HelloWorld"), {
+  fallback: <div>Loading...</div>,
+});
+const AsyncGoodnightMoon = loadable(
+  () => import("./components/GoodnightMoon"),
+  {
+    fallback: <div>Loading...</div>,
+  }
+); */
+
+/**
+ * code splitting using react-loadable
+ */
 const AsyncLanding = Loadable({
   loader: () => import("./Landing"),
   loading() {
