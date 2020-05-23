@@ -6,10 +6,7 @@ import MyProvider from "./MyProvider";
 import "./App.css";
 import "./sass/app.scss";
 import { Layout } from "antd";
-/* import AsyncLanding from "./Landing";
-import AsyncHome from "./components/Home";
-import AsyncHelloWorld from "./components/HelloWorld";
-import AsyncGoodnightMoon from "./components/GoodnightMoon"; */
+import Home from "./components/Home";
 
 import NavBar from "./components/NavBar";
 import Footer1 from "./components/Footer";
@@ -20,9 +17,6 @@ const { Content, Footer } = Layout;
  * code splitting using @loadable/component
  */
 /* const AsyncLanding = loadable(() => import("./Landing"), {
-  fallback: <div>Loading...</div>,
-});
-const AsyncHome = loadable(() => import("./components/Home"), {
   fallback: <div>Loading...</div>,
 });
 const AsyncHelloWorld = loadable(() => import("./components/HelloWorld"), {
@@ -40,12 +34,6 @@ const AsyncGoodnightMoon = loadable(
  */
 const AsyncLanding = Loadable({
   loader: () => import("./Landing"),
-  loading() {
-    return <div>Loading...</div>;
-  },
-});
-const AsyncHome = Loadable({
-  loader: () => import("./components/Home"),
   loading() {
     return <div>Loading...</div>;
   },
@@ -71,7 +59,7 @@ function App() {
           <NavBar />
           <Content style={{ padding: "0 50px" }}>
             <Switch>
-              <Route path="/" component={AsyncHome} exact />
+              <Route path="/" component={Home} exact />
               <Route path="/landing" component={AsyncLanding} exact />
               <Route path="/hello" component={AsyncHelloWorld} exact />
               <Route path="/goodbye" component={AsyncGoodnightMoon} exact />
