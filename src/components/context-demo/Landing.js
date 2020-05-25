@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MyContext } from "./MyProvider";
+import { MyContext } from "../../MyProvider";
 import {
   Layout,
   Card,

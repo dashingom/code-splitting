@@ -1,55 +1,23 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Loadable from "react-loadable";
-//import loadable from "@loadable/component";
 import MyProvider from "./MyProvider";
 import "./App.css";
 import "./sass/app.scss";
 import { Layout } from "antd";
+import LoadManager from "./utils/LoadManager";
 import Home from "./components/Home";
-
 import NavBar from "./components/NavBar";
 import Footer1 from "./components/Footer";
 
 const { Content, Footer } = Layout;
 
-/**
- * code splitting using @loadable/component
- */
-/* const AsyncLanding = loadable(() => import("./Landing"), {
-  fallback: <div>Loading...</div>,
-});
-const AsyncHelloWorld = loadable(() => import("./components/HelloWorld"), {
-  fallback: <div>Loading...</div>,
-});
-const AsyncGoodnightMoon = loadable(
-  () => import("./components/GoodnightMoon"),
-  {
-    fallback: <div>Loading...</div>,
-  }
-); */
-
-/**
- * code splitting using react-loadable
- */
-const AsyncLanding = Loadable({
-  loader: () => import("./Landing"),
-  loading() {
-    return <div>Loading...</div>;
-  },
-});
-const AsyncHelloWorld = Loadable({
-  loader: () => import("./components/HelloWorld"),
-  loading() {
-    return <div>Loading...</div>;
-  },
-});
-const AsyncGoodnightMoon = Loadable({
-  loader: () => import("./components/GoodnightMoon"),
-  loading() {
-    return <div>Loading...</div>;
-  },
-});
+const AsyncLanding = LoadManager(() =>
+  import("./components/context-demo/Landing")
+);
+const AsyncHelloWorld = LoadManager(() => import("./components/HelloWorld"));
+const AsyncGoodnightMoon = LoadManager(() =>
+  import("./components/GoodnightMoon")
+);
 
 function App() {
   return (
@@ -60,9 +28,11 @@ function App() {
           <Content style={{ padding: "0 50px" }}>
             <Switch>
               <Route path="/" component={Home} exact />
-              <Route path="/landing" component={AsyncLanding} exact />
-              <Route path="/hello" component={AsyncHelloWorld} exact />
-              <Route path="/goodbye" component={AsyncGoodnightMoon} exact />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Route path="/landing" component={AsyncLanding} exact />
+                <Route path="/hello" component={AsyncHelloWorld} exact />
+                <Route path="/goodbye" component={AsyncGoodnightMoon} exact />
+              </Suspense>
             </Switch>
           </Content>
           <Footer>

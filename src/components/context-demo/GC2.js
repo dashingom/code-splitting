@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from "react";
-import { MyContext } from "./MyProvider";
+import { MyContext } from "../../MyProvider";
 
 class GC2 extends Component {
   render() {
